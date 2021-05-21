@@ -61,7 +61,7 @@
                         <!--mini cart-->
                         <div class="mini_cart">
 
-                            @if ($products)
+                            {{-- @if ($products)
 
                             @foreach ($products as $product )
 
@@ -87,9 +87,7 @@
                                 
                             @endforeach
                                 
-                            @endif
-
-                         
+                            @endif --}}
                             
                             <div class="total_price">
                                 <span> total </span>

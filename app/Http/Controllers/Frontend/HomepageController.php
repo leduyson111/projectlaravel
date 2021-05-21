@@ -27,21 +27,15 @@ class HomepageController extends Controller
         $categories = DB::table("category")->get();
         $data = ["categories" => $categories ];
       
-        $producta = [];
-            $producta = DB::table("products")->orderBy('id', 'desc')->take(8)->get();
+        $products = [];
+            $products = DB::table("products")->orderBy('id', 'desc')->take(8)->get();
             $productPrice  = DB::table('products')->orderBy('product_price','desc')->take(8)->get();
 
-        $data["producta"] = $producta;
+        $data["products"] = $products;
         $data['productPrice']  = $productPrice;
 
         $cart = new CartModel();
         $data["cart"] =  $cart->getItems();
-        $cartIds = [];
-        foreach($data["cart"] as $id => $valCart) {
-            $cartIds[] = $id;
-        }
-        $products = DB::table("products")->whereIn("id", $cartIds)->get();
-        $data['products']  = $products;
 
         return view("frontend.home2", $data);
     }
